@@ -1,2 +1,2 @@
-# Podman-in-Operation
-Podman in Operation, published by Packt
+# Podman for DevOps
+Code and Examples Repository for the book: "Podman for DevOps", published by Packt
