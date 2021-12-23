@@ -1,0 +1,9 @@
+k8s.gcr.io: 
+  tls-verify: true 
+  images-by-tag-regex: 
+    kube-apiserver: ^v1\.22\..*
+    kube-controller-manager: ^v1\.22\..*
+    kube-proxy: ^v1\.22\..*
+    kube-scheduler: ^v1\.22\..*
+    coredns/coredns: ^v1\.8\..*
+    etcd: 3\.4.[0-9]*-[0-9]*

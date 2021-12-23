@@ -1,0 +1,19 @@
+docker.io: 
+  tls-verify: true 
+  images:  
+    alpine: [] 
+    nginx: 
+      - "latest" 
+  images-by-tag-regex: 
+    httpd: ^2\.4\.[0-9]*-alpine$ 
+quay.io: 
+  tls-verify: true 
+  images: 
+    fedora/fedora: 
+      - latest 
+registry.access.redhat.com: 
+  tls-verify: true 
+  images: 
+    ubi8: 
+      - "8.4" 
+      - "8.5"

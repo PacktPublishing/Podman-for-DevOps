@@ -1,0 +1,5 @@
+FROM registry.access.redhat.com/ubi8:latest
+RUN dnf install -y httpd && dnf clean all -y  
+COPY index.html /var/www/html
+RUN dnf install -y git && dnf clean all -y  
+CMD ["/usr/sbin/httpd", "-DFOREGROUND"]
