@@ -53,6 +53,7 @@ func main() {
 
 }
 
+// getStudents is a HTTP GET method to print a full list of the students in JSON encoding
 func getStudents(w http.ResponseWriter, r *http.Request) {
 	studentsInfo, err := models.GetStudents()
 	if err != nil {
@@ -61,12 +62,10 @@ func getStudents(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, std := range studentsInfo {
-		//s, err := json.Marshal(std.FirstName, std.MiddleName.std.LastName, std.Class, std.Course)
 		s, err := json.Marshal(std)
 		if err != nil {
 			log.Fatal(err)
 		}
-		//fmt.Fprintf(w, "%s\n%s\n%s\n%s\n%s\n", std.FirstName, std.MiddleName, std.LastName, std.Class, std.Course)
 		fmt.Fprintf(w, "%s", string(s))
 	}
 }
