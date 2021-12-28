@@ -8,6 +8,7 @@ import (
 var DB *sql.DB
 
 type Student struct {
+	Id         int
 	FirstName  string
 	MiddleName string
 	LastName   string
@@ -27,12 +28,12 @@ func GetStudents() ([]Student, error) {
 
 	for rows.Next() {
 		var student Student
-		err := rows.Scan(&student.FirstName, &student.MiddleName, &student.LastName, &student.Class, &student.Course)
+		err := rows.Scan(&student.Id, &student.FirstName, &student.MiddleName, &student.LastName, &student.Class, &student.Course)
 		if err != nil {
 			return nil, err
 		}
 
-		// Trim uncessary spaces
+		// Trim uncessary spaces from string fields
 		student.FirstName = strings.TrimSpace(student.FirstName)
 		student.MiddleName = strings.TrimSpace(student.MiddleName)
 		student.LastName = strings.TrimSpace(student.LastName)
