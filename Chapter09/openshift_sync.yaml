@@ -1,0 +1,4 @@
+quay.io: 
+  tls-verify: true 
+  images-by-tag-regex: 
+    openshift-release-dev/ocp-release: ^4\.9\..*-x86_64$
