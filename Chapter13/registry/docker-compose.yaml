@@ -1,0 +1,9 @@
+services: 
+  registry: 
+    ports: 
+      - "5000:5000" 
+    volumes: 
+      - registry_volume:/var/lib/registry 
+    image: docker.io/library/registry 
+volumes: 
+  registry_volume: {}
