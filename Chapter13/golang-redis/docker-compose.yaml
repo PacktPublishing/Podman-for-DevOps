@@ -1,0 +1,17 @@
+services:
+  web:
+    build: 
+      context: ./app
+      labels: 
+        - "com.example.description=Golang Redis App"
+    ports: 
+      - "8080:8080"
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+  redis:
+    image: docker.io/library/redis
+    deploy:
+      replicas: 1
+
