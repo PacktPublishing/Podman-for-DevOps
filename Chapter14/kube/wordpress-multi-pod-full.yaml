@@ -1,0 +1,152 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-4.0.0-rc4
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    volume.podman.io/driver: local
+  creationTimestamp: "2022-02-13T21:32:35Z"
+  name: dbvol
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+status: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    volume.podman.io/driver: local
+  creationTimestamp: "2022-02-13T21:32:35Z"
+  name: wpvol
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-02-13T21:32:35Z"
+  labels:
+    app: wordpress-pod
+  name: wordpress-pod
+spec:
+  ports:
+  - name: "80"
+    nodePort: 30408
+    port: 80
+    targetPort: 80
+  selector:
+    app: wordpress-pod
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-02-13T21:32:35Z"
+  labels:
+    app: mysql-pod
+  name: mysql-pod
+spec:
+  ports:
+  - name: "3306"
+    nodePort: 30284
+    port: 3306
+    targetPort: 3306
+  selector:
+    app: mysql-pod
+  type: NodePort
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-02-13T21:32:35Z"
+  labels:
+    app: wordpress-pod
+  name: wordpress-pod
+spec:
+  containers:
+  - args:
+    - apache2-foreground
+    env:
+    - name: WORDPRESS_DB_NAME
+      value: wordpress
+    - name: WORDPRESS_DB_HOST
+      value: mysql-pod
+    - name: WORDPRESS_DB_PASSWORD
+      value: wordpress
+    - name: WORDPRESS_DB_USER
+      value: wordpress
+    image: docker.io/library/wordpress:latest
+    name: wordpress
+    ports:
+    - containerPort: 80
+      hostPort: 8080
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /var/www/html
+      name: wpvol-pvc
+  restartPolicy: Never
+  volumes:
+  - name: wpvol-pvc
+    persistentVolumeClaim:
+      claimName: wpvol
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-02-13T21:32:35Z"
+  labels:
+    app: mysql-pod
+  name: mysql-pod
+spec:
+  containers:
+  - args:
+    - mysqld
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: myrootpasswd
+    - name: MYSQL_DATABASE
+      value: wordpress
+    - name: MYSQL_USER
+      value: wordpress
+    - name: MYSQL_PASSWORD
+      value: wordpress
+    image: docker.io/library/mysql:latest
+    name: db
+    ports:
+    - containerPort: 3306
+      hostPort: 3306
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /var/lib/mysql
+      name: dbvol-pvc
+  restartPolicy: Never
+  volumes:
+  - name: dbvol-pvc
+    persistentVolumeClaim:
+      claimName: dbvol
+status: {}
+
