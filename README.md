@@ -50,7 +50,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 * Learn Docker - Fundamentals of Docker 19.x - Second Edition [[Packt]](https://www.packtpub.com/product/learn-docker-fundamentals-of-docker-19-x-second-edition/9781838827472?utm_source=github&utm_medium=repository&utm_campaign=9781838827472) [[Amazon]](https://www.amazon.com/dp/1838827471)
 
-## Get to Know the Author
+## Get to Know the Authors
 **Alessandro Arrichiello**
 is a Solution Architect for Red Hat Inc. with a special focus on Telco technologies. He has a passion for GNU/Linux systems, which began at age 14 and continues today. He has worked with tools for automating Enterprise IT: configuration management and continuous integration through virtual platforms. Alessandro is also a writer for the Red Hat Developer Blog on which he authored several articles about container architecture and technology. He’s now helping telecommunication customers on adopting container orchestration environments like Red Hat OpenShift and Kubernetes, Infrastructure as a Service like OpenStack, Edge Computing and Datacenter Automation
 
