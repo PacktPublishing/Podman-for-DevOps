@@ -56,3 +56,7 @@ is a Solution Architect for Red Hat Inc. with a special focus on Telco technolog
 
 **Gianni Salinetti**
 is a Solution Architect from Rome working for Red Hat Inc. with a special focus on cloud-native computing and hybrid cloud strategies. He started working with GNU/Linux back in 2001 and developed a passion for Open Source software. His main fields of interest are application orchestration, automation, and systems performance tuning. He is also an advocate of DevSecOps and GitOps practices. He was a former Red Hat Instructor, teaching many classes about GNU/Linux, OpenStack, JBoss middleware, Ansible, Kubernetes and Red Hat OpenShift. He won Red Hat EMEA awards as best DevOps, cloud, and middleware instructor. He is also an author for the Red Hat Developer Blog and actively contributes to webinars and events.
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781803248233">https://packt.link/free-ebook/9781803248233 </a> </p>
